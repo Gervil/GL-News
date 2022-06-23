@@ -8,5 +8,5 @@
 import UIKit
 
 class ApiConnection {
-    static let NEWS = "https://private-f0eea-mobilegllatam.apiary-mock.com/list"
+    static let NEWS_API = "https://private-f0eea-mobilegllatam.apiary-mock.com/list"
 }

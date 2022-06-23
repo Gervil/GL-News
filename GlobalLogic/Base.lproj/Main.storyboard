@@ -16,6 +16,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="PgK-nX-tBQ">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                <color key="color" red="0.0039215686269999999" green="0.3411764706" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dsZ-2o-a7A">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -80,8 +84,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="PgK-nX-tBQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2oh-Al-aBS"/>
                             <constraint firstItem="dsZ-2o-a7A" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6El-xU-HYb"/>
                             <constraint firstItem="dsZ-2o-a7A" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Sqj-06-V27"/>
+                            <constraint firstItem="PgK-nX-tBQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="TJ4-hQ-H5n"/>
                             <constraint firstItem="dsZ-2o-a7A" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jTU-CG-avt"/>
                             <constraint firstItem="dsZ-2o-a7A" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rV1-0s-v9b"/>
                         </constraints>
@@ -89,6 +95,7 @@
                     <navigationItem key="navigationItem" title="Global Logic News" id="mCn-zO-y0L"/>
                     <connections>
                         <outlet property="mMasterTableView" destination="dsZ-2o-a7A" id="Hhg-4x-Sf8"/>
+                        <outlet property="mProgressBar" destination="PgK-nX-tBQ" id="zV1-kD-kl8"/>
                         <segue destination="Wkx-65-P1f" kind="show" identifier="NewsDetail" id="kYu-GQ-4jb"/>
                     </connections>
                 </viewController>
@@ -113,7 +120,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="DUO-Zg-nsL">
                                                 <rect key="frame" x="16" y="16" width="382" height="373"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="utw-up-aEh">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="utw-up-aEh">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="300"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="300" id="meI-S6-ITA"/>

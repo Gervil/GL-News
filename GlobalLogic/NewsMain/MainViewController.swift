@@ -10,6 +10,7 @@ import UIKit
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     //Controles
+    @IBOutlet weak var mProgressBar: UIActivityIndicatorView!
     @IBOutlet weak var mMasterTableView: UITableView!
     
     //Variables
@@ -84,15 +85,18 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     //----------------------------------------------------------------------------------------------
     //MARK: Get Api data
     func getApiData() {
+        showProgress(true)
         
         //Check internet connection
         if !Util.checkInternetAccess() {
+            self.present(Messages.errorConnection(), animated: true, completion: nil)
+            showProgress(false)
             endRefreshing()
             return
         }
         
         //Url request
-        let request = Util.cloudConnect(api_url: ApiConnection.NEWS, parms: "")
+        let request = Util.cloudConnect(api_url: ApiConnection.NEWS_API, parms: "")
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             OperationQueue.main.addOperation {
                 do {
@@ -104,6 +108,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     self.endRefreshing()
                     return
                 }
+                self.showProgress(false)
             }
         }
         task.resume()
@@ -149,5 +154,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 destination.mDescription = mNewsDatas[mNewsSelected].description
             }
         }
+    }
+    
+    //ShowProgress
+    func showProgress(_ show: Bool) {
+        mProgressBar.isHidden = !show
+        mMasterTableView.isHidden = show
     }
 }
